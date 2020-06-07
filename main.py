@@ -7,12 +7,15 @@ import numpy as np
 import pandas as pd
 
 import pika
+
+
 rabbitmq_host = os.getenv("RABBITMQ_HOST")
 rabbitmq_user = os.getenv("RABBITMQ_USER")
 rabbitmq_password = os.getenv("RABBITMQ_PASSWORD")
-routing_key = os.getenv("RABBITMQ_ROUTING_KEY")
+routing_key = 'soai.data.no2'
 exchange_id = 'amq.topic'
 credentials = pika.credentials.PlainCredentials(username=rabbitmq_user, password=rabbitmq_password)
+
 ##### rbmq connection
 connection = pika.BlockingConnection(
     pika.ConnectionParameters(host=rabbitmq_host,
@@ -27,8 +30,6 @@ connection = pika.BlockingConnection(
 )
 channel = connection.channel()
 channel.exchange_declare(exchange=exchange_id, exchange_type='topic', durable=True)
-
-
 
 while True:
 
