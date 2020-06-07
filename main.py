@@ -41,5 +41,5 @@ while True:
     message_as_string = json.dumps(message_object)
     channel.basic_publish(exchange=exchange_id, routing_key=routing_key, body=message_as_string)
 
-    #print('message sent')
+    print('message sent')
     time.sleep(20)

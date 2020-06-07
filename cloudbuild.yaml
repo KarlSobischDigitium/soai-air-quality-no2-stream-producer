@@ -1,0 +1,7 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/soai-air-quality/soai-air-quality-no2-stream-producer:0.1.0', '.']
+  timeout: 600s
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/soai-air-quality/soai-air-quality-no2-stream-producer:0.1.0']
+
