@@ -13,6 +13,7 @@ COPY ./lib /opt/lib
 COPY ./savedModels /opt/savedModels
 COPY ./air-quality-backend /opt/air-quality-backend
 
+RUN pip install -e /opt/air-quality-backend
 RUN echo "**** install requirements.txt ****"
 RUN pip install -r /opt/requirements.txt
 ENTRYPOINT ["python" , "/opt/main.py"]
