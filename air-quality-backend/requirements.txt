@@ -1,0 +1,10 @@
+numpy
+pandas
+colorlog
+pyarrow
+tensorflow
+scikit-learn
+matplotlib
+geopy
+IPython
+influxdb

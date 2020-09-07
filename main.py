@@ -5,8 +5,13 @@ from datetime import datetime
 import json
 import numpy as np
 import pandas as pd
-
 import pika
+import time
+import os
+import json
+import simplejson
+import logging
+from lib.SOIADataFetcherService import SOIADataFetcherService
 
 
 rabbitmq_host = os.getenv("RABBITMQ_HOST")
@@ -33,14 +38,17 @@ channel.exchange_declare(exchange=exchange_id, exchange_type='topic', durable=Tr
 
 while True:
 
-    # USE SOAI LIB HERE TO FETCH AIR DATA
+    print('Enter loop')
 
-    message_object = {
-        'text': 'HEY :D'
-    }
+    service = SOIADataFetcherService()
+    service.update_sensor_setwork()
 
-    message_as_string = json.dumps(message_object)
+    data = service.fetch_data()
+
+    print(data)
+
+    message_as_string = json.dumps(data)
     channel.basic_publish(exchange=exchange_id, routing_key=routing_key, body=message_as_string)
 
     print('message sent')
-    time.sleep(20)
+    time.sleep(10)
