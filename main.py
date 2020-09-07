@@ -27,10 +27,10 @@ connection = pika.BlockingConnection(
                               credentials=credentials,
                               connection_attempts=1,
                               retry_delay=1,
-                              heartbeat=30,
-                              blocked_connection_timeout=30,
-                              socket_timeout=30,
-                              stack_timeout=30
+                              heartbeat=10,
+                              blocked_connection_timeout=5,
+                              socket_timeout=5,
+                              stack_timeout=5
                               )
 )
 channel = connection.channel()
