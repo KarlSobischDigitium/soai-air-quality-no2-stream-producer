@@ -14,7 +14,7 @@ logger = logging.getLogger()
 class SOIADataFetcherService():
 
   def update_sensor_setwork(self):
-    self.soaiSensorNetwork = SOAISensorNetwork('./air-quality-backend/configs/sensorNetwork.conf')
+    self.soaiSensorNetwork = SOAISensorNetwork(os.getenv('SENSOR_NETWORK_CONFIG_PATH'))
     self.soaiSensorNetwork.fCheckNetwork()
 
   def fetch_data(self):
