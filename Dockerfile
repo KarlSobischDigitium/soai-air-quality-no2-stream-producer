@@ -8,7 +8,7 @@ RUN echo "source activate env" > ~/.bashrc
 ENV PATH /opt/conda/envs/env/bin:$PATH
 RUN echo "**** copy source ****"
 COPY ./requirements.txt /opt/
-COPY ./main.py /opt/
+COPY ./no2StreamProducerService.py /opt/
 COPY ./lib /opt/lib
 COPY ./savedModels /opt/savedModels
 COPY ./air-quality-backend /opt/air-quality-backend
@@ -16,4 +16,4 @@ COPY ./air-quality-backend /opt/air-quality-backend
 RUN pip install -e /opt/air-quality-backend
 RUN echo "**** install requirements.txt ****"
 RUN pip install -r /opt/requirements.txt
-ENTRYPOINT ["python" , "/opt/main.py"]
+ENTRYPOINT ["python" , "/opt/no2StreamProducerService.py"]

@@ -1,6 +1,7 @@
 import logging
 import simplejson
 import os
+import json
 
 from SOAI.handler.SOAIDBHandler import SOAIDBHandler
 from SOAI.handler.SOAIDiskHandler import SOAIDiskHandler
@@ -81,13 +82,13 @@ class SOIADataFetcherService():
 
     data = {
       'sensors': {
-        'sensor_type': simplejson.dumps(sensor_type, ignore_nan=True),
-        'sensor_id': simplejson.dumps(sensor_id, ignore_nan=True),
-        'lat': simplejson.dumps(sensor_lat, ignore_nan=True),
-        'lon': simplejson.dumps(sensor_lon, ignore_nan=True),
-        'no': simplejson.dumps(sensor_no, ignore_nan=True),
-        'no2': simplejson.dumps(sensor_no2, ignore_nan=True),
-        'ozon': simplejson.dumps(sensor_ozon, ignore_nan=True),
+        'sensor_type': json.loads(simplejson.dumps(sensor_type, ignore_nan=True)),
+        'sensor_id': json.loads(simplejson.dumps(sensor_id, ignore_nan=True)),
+        'lat': json.loads(simplejson.dumps(sensor_lat, ignore_nan=True)),
+        'lon': json.loads(simplejson.dumps(sensor_lon, ignore_nan=True)),
+        'no': json.loads(simplejson.dumps(sensor_no, ignore_nan=True)),
+        'no2': json.loads(simplejson.dumps(sensor_no2, ignore_nan=True)),
+        'ozon': json.loads(simplejson.dumps(sensor_ozon, ignore_nan=True)),
       }
     }
     logger.debug(simplejson.dumps(sensor_no2, ignore_nan=True))
